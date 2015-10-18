@@ -24,7 +24,14 @@ class MainPage(Handler):
     def get(self):
         self.render("blog_newentry.html")
     def post(self):
-    	write("Thanks")
+    	subject = self.request.get("subject")
+    	content = self.request.get("content")
+    	error = "You need a subject AND content!"
+    	if subject and content:
+    		self.response.out.write("thanks")
+    	else:
+    		self.render("blog_newentry.html", error= error)
+
 
 
 app = webapp2.WSGIApplication([
