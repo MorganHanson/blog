@@ -27,10 +27,10 @@ class MainPage(Handler):
     	subject = self.request.get("subject")
     	content = self.request.get("content")
     	error = "You need a subject AND content!"
-    	if subject and content:
+    	if subject!= "" and content != "":
     		self.response.out.write("thanks")
     	else:
-    		self.render("blog_newentry.html", error= error)
+    		self.render("blog_newentry.html", subject = subject, content = content, error= error)
 
 
 
